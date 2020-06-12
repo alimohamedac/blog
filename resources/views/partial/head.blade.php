@@ -3,7 +3,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Blog Post - Start Bootstrap Template</title>
+  <title>Blog</title>
 
   <!-- Bootstrap core CSS -->
   <link href="{{ asset('themes/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
