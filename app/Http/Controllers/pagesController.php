@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use DB;
 
 class pagesController extends Controller
 {
@@ -17,16 +18,25 @@ class pagesController extends Controller
         $posts = Post::latest('id')->paginate(3);
         return view ('pages.posts', compact('posts'));
     }
-    public function index()
+    public function post($id)
     {
-        //
+        $post = DB::table('posts')->find($id);
+        return view ('pages.post', compact('post'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function store()
+    {
+        //Post::create(request->all());
+        
+        $post = new Post;
+
+        $post->title = request('title');
+        $post->body = request('body');
+
+        $post->Save();
+        return redirect()->route('Posts');
+
+    }
     public function create()
     {
         //
@@ -38,21 +48,13 @@ class pagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+//    public function store(Request $request)
+  //  {
         //
-    }
+    //}
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+     * Display
 
     /**
      * Show the form for editing the specified resource.

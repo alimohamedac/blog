@@ -3,13 +3,16 @@
 @section('post')
         
         @foreach ($posts as $post)
-        <h1 class="mt-4">{{ $post->title }}</h1>
+        <h1 >
+          <a href="{{ route('Post', $post->id) }}">{{ $post->title }} </a>
+
+          </h1>
 
         <hr>
 
         <!-- Date/Time -->
-        <p>Posted on January 1, 2019 at 12:00 PM</p>
-
+        <p>Posted on {{ $post->created_at->toDayDateTimeString() }}</p>
+ 
         <hr>
 
         <!-- Post Content -->
@@ -22,6 +25,22 @@
         <div class="clearfix">
             {!! $posts->links() !!}
         </div>
+
+  <form action="{{ route('Add_Post') }}" method="post" name="Add_Post" id="contact-form">
+                @csrf
+                <div class="form-group">
+                <label>Title</label>
+                <input type="text" class="form-control" name ="title" id="title" placeholder="Enter title">
+              </div>
+              <div class="form-group">
+                <label>Body</label>
+                <textarea type="text" class="form-control" name ="body" id="body" placeholder="Content(body)"></textarea>
+              </div>
+              
+              
+              <button type="submit" class="btn btn-primary">Add Post</button>
+            </form>
+
 
         <!-- Comments Form -->
         <div class="card my-4">

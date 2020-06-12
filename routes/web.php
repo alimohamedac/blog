@@ -13,4 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/posts', 'pagesController@posts');
+Route::get('/posts', 'pagesController@posts')->name('Posts');
+Route::get('/posts/{id}', 'pagesController@post')->name('Post');
+Route::post('/posts/store', 'pagesController@store')->name('Add_Post');
