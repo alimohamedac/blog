@@ -15,9 +15,13 @@
         <!-- Post Content -->
         <p class="lead">{{ $post->body }}</p>
 
-
         <hr>
         @endforeach
+
+        <!-- pagination -->
+        <div class="clearfix">
+            {!! $posts->links() !!}
+        </div>
 
         <!-- Comments Form -->
         <div class="card my-4">

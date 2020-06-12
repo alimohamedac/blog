@@ -14,7 +14,7 @@ class pagesController extends Controller
      */
     public function posts()
     {
-        $posts = Post::all();
+        $posts = Post::latest('id')->paginate(3);
         return view ('pages.posts', compact('posts'));
     }
     public function index()
