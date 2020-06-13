@@ -20,9 +20,9 @@ class pagesController extends Controller
         $posts = Post::latest('id')->paginate(3);
         return view ('pages.posts', compact('posts'));
     }
-    public function post($id)
+    public function post(Post $post)
     {
-        $post = DB::table('posts')->find($id);
+       // $post = DB::table('posts')->find($id);
         return view ('pages.post', compact('post'));
     }
 

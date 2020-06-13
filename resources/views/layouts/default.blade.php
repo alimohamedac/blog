@@ -14,12 +14,15 @@
     <div class="row">
 
     @include('partial.content')
+         @include('partial.sidebar')
 
     </div>
     <!-- /.row -->
 
+
   </div>
   <!-- /.container -->
+
 
   <!-- Footer -->
   <footer class="py-5 bg-dark">
