@@ -14,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/posts', 'pagesController@posts')->name('Posts');
-Route::get('/posts/{id}', 'pagesController@post')->name('Post');
+Route::get('/posts/{post}', 'pagesController@post')->name('Post');
 Route::post('/posts/store', 'pagesController@store')->name('Add_Post');
+Route::post('/posts/{post}/store', 'commentsController@store')->name('Add_Comment');
