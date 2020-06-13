@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+//use App\Http\Requests\PostRequest;
+
 use App\Post;
 use DB;
 
@@ -24,17 +26,36 @@ class pagesController extends Controller
         return view ('pages.post', compact('post'));
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        //Post::create(request->all());
-        
-        $post = new Post;
+           // $data = $request->all();   //validation
+            $this->validate(request(),[
+                'title'       => 'required|min:5|max:50',
+                'body'     => 'required|min:10|max:250',
+                'featured'    => 'image|mimes:jpg,jpeg,gif,png',
+            ]);
+            //hwar image //
+            $featured_new_name =time().'.'.$request->featured->getClientOriginalName();
 
-        $post->title = request('title');
-        $post->body = request('body');
 
-        $post->Save();
+            $post = new Post;
+            $post->title = request('title');
+            $post->body = request('body');      
+            $post->featured = $featured_new_name;
+           
+            $post->Save();
+
+
+            //$post = Post::create([
+            //'title'       => $request->title,
+            //'body'        => $request->body,
+            //'featured'    => 'uploads/posts'.$featured_new_name,
+           // ]);
+            $request->featured->move(public_path('uploads/posts'),$featured_new_name);
+
         return redirect()->route('Posts');
+        // dd($request->all());
+    
 
     }
     public function create()
