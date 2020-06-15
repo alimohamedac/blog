@@ -6,11 +6,15 @@
 
         <hr>
         @if ($post->featured)
-        <p><img src="uploads/posts/{{ $post->featured }}"></p>
+        <p><img src="../uploads/posts/{{ $post->featured }}"></p>
         @endif
 
         <!-- Date/Time -->
-        <p>Posted on January 1, 2019 at 12:00 PM</p>
+        <p>Posted on {{ $post->created_at }} - <strong>Category:</strong>
+        
+          {{ $post->category->name }}
+       
+        </p>
 
         <hr>
 

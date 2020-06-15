@@ -13,7 +13,11 @@
         <p><img src="uploads/posts/{{ $post->featured }}"></p>
         @endif
         <!-- Date/Time -->
-        <p>Posted on {{ $post->created_at->toDayDateTimeString() }}</p>
+        <p>Posted on {{ $post->created_at }} - <strong>Category:</strong>
+        <a href="{{ route('Category', $post->category->name) }}">
+          {{ $post->category->name }}
+        </a>
+        </p>
  
         <hr>
 
@@ -44,9 +48,20 @@
                 <label for="featured">Image</label>
                 <input type="file" class="form-control" name ="featured" value="{{ old('featured') }}" >
               </div>
+
+              <div class="form-group">
+              <label for="exampleFormControlSelect1">Category</label>
+              <select class="form-control" name="category_id" id="category_id">
+               
+               @foreach($categories as $category)
+                <option value="{{$category->id}}" >{{ $category->name }}</option>
+               @endforeach
+              </select>
+            </div>
               
               <button type="submit" class="btn btn-primary">Add Post</button>
             </form>
+            
 
         @if ($errors->any())
             <div class="alert alert-danger">
