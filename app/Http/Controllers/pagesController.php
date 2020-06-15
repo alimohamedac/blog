@@ -6,10 +6,21 @@ use Illuminate\Http\Request;
 //use App\Http\Requests\PostRequest;
 
 use App\Post;
+use App\Category;
 use DB;
 
 class pagesController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +29,7 @@ class pagesController extends Controller
     public function posts()
     {
         $posts = Post::latest('id')->paginate(3);
-        return view ('pages.posts', compact('posts'));
+        return view ('pages.posts', compact('posts'))->with('categories',Category::all());
     }
     public function post(Post $post)
     {
@@ -34,6 +45,7 @@ class pagesController extends Controller
                 'body'     => 'required|min:10|max:250',
                 'featured'    => 'image|mimes:jpg,jpeg,gif,png',
             ]);
+            
             //hwar image //
             $featured_new_name =time().'.'.$request->featured->getClientOriginalName();
 
@@ -42,6 +54,7 @@ class pagesController extends Controller
             $post->title = request('title');
             $post->body = request('body');      
             $post->featured = $featured_new_name;
+            $post->category_id = request('category_id');
            
             $post->Save();
 
@@ -56,33 +69,23 @@ class pagesController extends Controller
         return redirect()->route('Posts');
         // dd($request->all());
     
-
     }
-    public function create()
+   
+    public function category($name)
     {
-        //
+       $cat = DB::table('categories')->where('name',$name)->value('id');       // id
+       $posts = DB::table('posts')->where('category_id',$cat)->get();       
+
+        return view ('pages.category', compact('posts'));
+  
+    }
+  
+    public function admin()
+    {
+        return view ('pages.admin');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-//    public function store(Request $request)
-  //  {
-        //
-    //}
-
-    /**
-     * Display
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
         //
@@ -109,5 +112,6 @@ class pagesController extends Controller
     public function destroy($id)
     {
         //
+        
     }
 }
