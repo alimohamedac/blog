@@ -14,7 +14,6 @@
     <div class="row">
 
     @include('partial.content')
-         @include('partial.sidebar')
 
     </div>
     <!-- /.row -->

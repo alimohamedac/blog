@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
 use DB;
+use App\User;
+use App\Role;
+
 
 class pagesController extends Controller
 {
@@ -82,10 +85,46 @@ class pagesController extends Controller
   
     public function admin()
     {
-        return view ('pages.admin');
+        $users = User::all();
+        return view ('pages.admin',compact('users'));
     }
 
-    
+
+    public function addRole(Request $request)
+    {
+        $user = User::where('email',$request['email'])->first();
+        $user->roles()->detach();
+
+        if($request['role_user'])
+        {
+            $user->roles()->attach(Role::where('name','User')->first());
+
+        }
+
+        if($request['role_editor'])
+        {
+            $user->roles()->attach(Role::where('name','Editor')->first());
+
+        }
+
+        if($request['role_admin'])
+        {
+            $user->roles()->attach(Role::where('name','Admin')->first());
+
+        }
+        return redirect()->back();
+    }
+
+    public function editor()
+    {
+        return view ('pages.editor');
+    }
+
+    public function accessDenied()
+    {
+        return view ('pages.access_denied');
+    }
+
     public function edit($id)
     {
         //

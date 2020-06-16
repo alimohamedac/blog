@@ -20,17 +20,26 @@ Route::post('/posts/{post}/store', 'commentsController@store')->name('Add_Commen
 Route::get('/category/{name}', 'pagesController@category')->name('Category');
 
 Route::get('/', function(){
-	return redirect()->to('/posts');
+	return redirect()->to('/posts');    //idea
 });
 
-//test
-Route::get('/admin', [
-	'uses' => 'pagesController@admin',
-	'as' => 'pages.admin',
-	'middleware' => 'roles',
-	'roles' => ['Admin']
 
+Route::group(['middleware' => 'roles', 'roles' => ['Admin']], function(){
+	
+	Route::get('/admin', 'pagesController@admin')->name('Admin');
+	Route::get('/add_role', 'pagesController@addRole')->name('Add_role');
+
+});
+
+
+Route::get('/editor', [
+	'uses' => 'pagesController@editor',
+	'as' => 'pages.editor',
+	'middleware' => 'roles',
+	'roles' => ['Admin','Editor']
 ]);
+
+Route::get('/access_denied', 'pagesController@accessDenied')->name('AccessDenied');
 
 
 Auth::routes();

@@ -27,7 +27,7 @@ class CheckRole
            return $next($request);
         }
 
-            return redirect()->route('Posts');
+            return redirect()->route('AccessDenied');
 
     }
 }
