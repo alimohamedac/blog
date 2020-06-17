@@ -6,8 +6,15 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+use App\Comment;
+
 class User extends Authenticatable
 {
+    public function comments()
+    {
+        return $this->hasMany(Comment::Class);
+    }
+
     public function roles()
     {
         return $this->belongsToMany('App\Role','user_role','user_id','role_id');

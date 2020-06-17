@@ -26,7 +26,7 @@
         <div class="media mb-4">
           <div class="media-body">
             	@foreach($post->comments as $comment)
-            		<p>{{ $comment->body }}</p>
+            		<span style="background: gray"> {{ Auth::user()->name }} </span> <p>{{ $comment->body }}</p>
             	@endforeach
 
           </div>
