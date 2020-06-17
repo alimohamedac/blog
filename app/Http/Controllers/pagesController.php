@@ -125,6 +125,15 @@ class pagesController extends Controller
         return view ('pages.access_denied');
     }
 
+    public function statistics()
+    {
+        $users = DB::table('users')->count();       
+        $posts = DB::table('posts')->count();       
+        $comments = DB::table('comments')->count();       
+
+        return view ('pages.statistics', compact('users','posts','comments'));
+    }
+
     public function edit($id)
     {
         //

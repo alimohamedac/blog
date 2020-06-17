@@ -13,6 +13,9 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="{{ route('Statistics') }}">Statistics</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="#">About</a>
           </li>
           <li class="nav-item">

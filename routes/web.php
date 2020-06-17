@@ -25,7 +25,7 @@ Route::get('/', function(){
 
 
 Route::group(['middleware' => 'roles', 'roles' => ['Admin']], function(){
-	
+
 	Route::get('/admin', 'pagesController@admin')->name('Admin');
 	Route::get('/add_role', 'pagesController@addRole')->name('Add_role');
 
@@ -45,3 +45,5 @@ Route::get('/access_denied', 'pagesController@accessDenied')->name('AccessDenied
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/statistics', 'pagesController@statistics')->name('Statistics');
