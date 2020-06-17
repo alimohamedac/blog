@@ -32,6 +32,9 @@
           </div>
           </div>
 
+        @if($stop_comment == 1)
+          <h3>Oops Comnments are closed !!!</h3>
+        @else
          <!-- Comments Form -->
         <div class="card my-4">
           <h5 class="card-header">Leave a Comment:</h5>
@@ -45,6 +48,7 @@
             </form>
           </div>
         </div>
+        @endif
 
 @endsection
 

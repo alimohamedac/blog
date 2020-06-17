@@ -18,6 +18,8 @@ Route::get('/posts/{post}', 'pagesController@post')->name('Post');
 Route::post('/posts/store', 'pagesController@store')->name('Add_Post');
 Route::post('/posts/{post}/store', 'commentsController@store')->name('Add_Comment');
 Route::get('/category/{name}', 'pagesController@category')->name('Category');
+Route::get('/about', 'pagesController@about')->name('About');
+
 
 Route::get('/', function(){
 	return redirect()->to('/posts');    //idea
@@ -27,7 +29,8 @@ Route::get('/', function(){
 Route::group(['middleware' => 'roles', 'roles' => ['Admin']], function(){
 
 	Route::get('/admin', 'pagesController@admin')->name('Admin');
-	Route::get('/add_role', 'pagesController@addRole')->name('Add_role');
+	Route::post('/add_role', 'pagesController@addRole')->name('Add_role');
+	Route::post('/settings', 'pagesController@settings')->name('Settings');	
 
 });
 

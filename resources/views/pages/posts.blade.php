@@ -83,7 +83,7 @@
 @section('sideBar')
         
  <!-- Sidebar Widgets Column -->
-      <div class="col-md-4">
+      <div class="col-md-8" style="float: right">
 
         <!-- Search Widget -->
         <div class="card my-4">

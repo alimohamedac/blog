@@ -3,7 +3,9 @@
 @section('post')
         
         @foreach ($posts as $post)
-        <h1 class="mt-4">{{ $post->title }}</h1>
+        <h1 class="mt-4">
+          <a href="{{ route('Post', $post->id) }}">{{ $post->title }} </a>
+        </h1>
 
         <hr>
         @if ($post->featured)
@@ -13,7 +15,6 @@
         <!-- Date/Time -->
         <p>Posted on {{ $post->created_at }} - <strong>Category:</strong>
         
-          
        
         </p>
 

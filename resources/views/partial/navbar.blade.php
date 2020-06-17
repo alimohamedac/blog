@@ -13,10 +13,11 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('Statistics') }}">Statistics</a>
+            <a class="nav-link" href="{{ route('Statistics') }}"  target="_blank">Statistics</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="{{ route('About') }}">About</a>
+
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Contact</a>
@@ -42,11 +43,11 @@
                         @else
 
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link " href="{{ route('Posts') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
                             </li>
-
+                            <li>
                                 <div>
                                     <a class="nav-link" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -61,7 +62,7 @@
                             </li> 
                             @if(Auth::user()->hasRole('Admin'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/admin') }}">Admin</a>
+                                    <a class="nav-link" href="{{ url('/admin') }}" target="_blank">Admin</a>
                                 </li>
                             @endif
                         @endguest

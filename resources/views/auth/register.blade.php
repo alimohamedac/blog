@@ -7,6 +7,9 @@
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
+                @if($stop_register == 1)
+                    <h3>Oops Registration is closed !!!</h3>
+                @else
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
@@ -69,7 +72,9 @@
                             </div>
                         </div>
                     </form>
+
                 </div>
+                @endif
             </div>
         </div>
     </div>

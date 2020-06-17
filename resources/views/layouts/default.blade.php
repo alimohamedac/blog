@@ -22,7 +22,6 @@
   </div>
   <!-- /.container -->
 
-
   <!-- Footer -->
   <footer class="py-5 bg-dark">
         @include('partial.footer')

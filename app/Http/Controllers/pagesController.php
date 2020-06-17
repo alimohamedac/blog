@@ -29,15 +29,18 @@ class pagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function posts()
     {
         $posts = Post::latest('id')->paginate(3);
         return view ('pages.posts', compact('posts'))->with('categories',Category::all());
     }
+
     public function post(Post $post)
     {
        // $post = DB::table('posts')->find($id);
-        return view ('pages.post', compact('post'));
+        $stop_comment = DB::table('settings')->where('name', 'stop_comment')->value('value');
+        return view ('pages.post', compact('post','stop_comment'));
     }
 
     public function store(Request $request)
@@ -73,6 +76,13 @@ class pagesController extends Controller
         // dd($request->all());
     
     }
+
+    public function about()
+    {
+        
+        return view ('pages.about');
+    }
+
    
     public function category($name)
     {
@@ -86,9 +96,44 @@ class pagesController extends Controller
     public function admin()
     {
         $users = User::all();
-        return view ('pages.admin',compact('users'));
+
+        $stop_comment = DB::table('settings')->where('name', 'stop_comment')->value('value');
+        $stop_register = DB::table('settings')->where('name', 'stop_register')->value('value');
+
+        return view ('pages.admin',compact('users','stop_comment','stop_register'));
     }
 
+    public function settings(Request $request)
+    {
+        if($request->stop_comment)
+        {
+            DB::table('settings')
+            ->where('name', 'stop_comment')
+            ->update(['value' => 1]);
+        }
+        else
+        {
+            DB::table('settings')
+            ->where('name', 'stop_comment')
+            ->update(['value' => 0]);
+        }
+
+        if($request->stop_register)
+        {
+            DB::table('settings')
+            ->where('name', 'stop_register')
+            ->update(['value' => 1]);
+        }
+        else
+        {
+            DB::table('settings')
+            ->where('name', 'stop_register')
+            ->update(['value' => 0]);
+        }
+
+        return redirect()->back();
+
+    }
 
     public function addRole(Request $request)
     {

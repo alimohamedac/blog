@@ -1,3 +1,3 @@
-<div class="alert alert-danger" role="alert">
+<h1 class="page-header">
   This is a Access Denied!!!
-</div>
+</h1>

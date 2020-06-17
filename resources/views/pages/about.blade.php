@@ -1,39 +1,14 @@
 @extends('layouts.default')
 
 @section('post')
-<hr>
-<h1 class="page-header">
-  Statistics
-  <small>website statistics</small>
-</h1>
-
-<table class="table table-dark">
-    <tr>
-      <th scope="col">All Users</th>
-      <th scope="col">{{ $users }}</th>
-    </tr>
-    <tr>
-      <th scope="col">All Posts</th>
-      <th scope="col">{{ $posts }}</th>
-    </tr>
-    <tr>
-      <th scope="col">All Comments</th>
-      <th scope="col">{{ $comments }}</th>
-    </tr>
-</table>
+        //
 
 @endsection
 
 @section('sideBar')
         
- <!-- Sidebar Widgets Column 
-<div style="float:right">
-     ali aaa
-     <hr>
-     alllllii
-   </div>
- -->
-      <div class="col-md-8" style="float: right" style="overflow: hidden">
+ <!-- Sidebar Widgets Column -->
+      <div class="col-md-8" style="float: right">
 
         <!-- Search Widget -->
         <div class="card my-4">
