@@ -1,6 +1,7 @@
 @extends('layouts.default')
 
 @section('post')
+<hr>
 <form action="{{ route('Send') }}" method="post" name="Send" >
                 @csrf
                 <div class="form-group">
@@ -29,5 +30,5 @@
               
               <button type="submit" class="btn btn-primary">Send</button>
         </form>
-
+<hr>
 @endsection

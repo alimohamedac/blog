@@ -55,7 +55,7 @@
 @section('sideBar')
         
  <!-- Sidebar Widgets Column -->
-      <div class="col-md-4">
+      <div class="col-md-12">
 
         <!-- Search Widget -->
         <div class="card my-4">

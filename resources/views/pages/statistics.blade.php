@@ -33,7 +33,7 @@
      alllllii
    </div>
  -->
-      <div class="col-md-8" style="float: right" style="overflow: hidden">
+      <div class="col-md-12">
 
         <!-- Search Widget -->
         <div class="card my-4">

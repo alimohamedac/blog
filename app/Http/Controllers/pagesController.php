@@ -52,10 +52,10 @@ class pagesController extends Controller
             $this->validate(request(),[
                 'title'       => 'required|min:5|max:50',
                 'body'     => 'required|min:10|max:250',
-                'featured'    => 'image|mimes:jpg,jpeg,gif,png',
+                'featured'    => 'image|mimes:jpg,jpeg,gif,png|max:2048',
             ]);
             
-            //hwar image //
+            // image //
             $featured_new_name =time().'.'.$request->featured->getClientOriginalName();
 
 

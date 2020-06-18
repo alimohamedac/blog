@@ -15,7 +15,7 @@ class postsSeeder extends Seeder
     {
          DB::table('posts')->truncate();
 		for($i=0;$i<11;$i++)
-    {
+        {
         Post::create([
         	'title' => 'the '.rand(0,9).' Post',
         	'body'=> 'This Post is very important because i love alahly ',
@@ -23,7 +23,7 @@ class postsSeeder extends Seeder
         ]);
 
 
-}
+        }
 
     }
 }
