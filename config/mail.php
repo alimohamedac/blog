@@ -88,6 +88,8 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
+    'webmaster_email' => env('WEBMASTER_MAIL','am6064029@gmail.com'),
+
     /*
     |--------------------------------------------------------------------------
     | Markdown Mail Settings

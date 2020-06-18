@@ -19,6 +19,8 @@ Route::post('/posts/store', 'pagesController@store')->name('Add_Post');
 Route::post('/posts/{post}/store', 'commentsController@store')->name('Add_Comment');
 Route::get('/category/{name}', 'pagesController@category')->name('Category');
 Route::get('/about', 'pagesController@about')->name('About');
+Route::get('/contact','pagesController@contact')->name('Contact');
+Route::post('/contact','pagesController@send')->name('Send');
 
 
 Route::get('/', function(){

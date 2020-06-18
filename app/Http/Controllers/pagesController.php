@@ -10,6 +10,9 @@ use App\Category;
 use DB;
 use App\User;
 use App\Role;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Contact;
+use App\Http\Requests\ContactRequest;
 
 
 class pagesController extends Controller
@@ -83,6 +86,18 @@ class pagesController extends Controller
         return view ('pages.about');
     }
 
+    public function contact()
+     {
+        return view('pages.contact');
+     }
+     public function send(ContactRequest $request)
+     {
+        $data = $request->all();
+        Mail::to(config('mail.webmaster_email'))
+        ->send(new Contact($data));
+        return redirect()->back();
+        //dd($request);
+     }
    
     public function category($name)
     {
@@ -178,6 +193,8 @@ class pagesController extends Controller
 
         return view ('pages.statistics', compact('users','posts','comments'));
     }
+
+
 
     public function edit($id)
     {
