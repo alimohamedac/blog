@@ -8,19 +8,19 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="{{ route('Posts') }}">Home
+            <a class="nav-link" href="{{ route('Posts') }}">{{ trans('frontend.navbar.home') }}
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('Statistics') }}"  target="_blank">Statistics</a>
+            <a class="nav-link" href="{{ route('Statistics') }}"  target="_blank">{{ trans('frontend.navbar.statistics') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('About') }}">About</a>
+            <a class="nav-link" href="{{ route('About') }}">{{ trans('frontend.navbar.about') }}</a>
 
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('Contact') }}">Contact</a>
+            <a class="nav-link" href="{{ route('Contact') }}">{{ trans('frontend.navbar.contact') }}</a>
           </li>
           
  
@@ -62,7 +62,7 @@
                             </li> 
                             @if(Auth::user()->hasRole('Admin'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/admin') }}" target="_blank">Admin</a>
+                                    <a class="nav-link" href="{{ url('/admin') }}" target="_blank">{{ trans('frontend.navbar.admin') }}</a>
                                 </li>
                             @endif
                         @endguest
