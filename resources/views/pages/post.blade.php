@@ -9,7 +9,10 @@
         @csrf
         @method('DELETE')
         <button type="submit" class="btn btn-danger">Delete</button>
-        </form>
+        </form> 
+        <a class="btn btn-secondary" href="{{ route('Edit', $post->id) }}">Edit</a>
+
+         
           @endif
         @endif
 

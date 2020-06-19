@@ -75,7 +75,7 @@ class pagesController extends Controller
            // ]);
             $request->featured->move(public_path('uploads/posts'),$featured_new_name);
 
-        return redirect()->route('Posts');
+            return redirect()->route('Posts');
         // dd($request->all());
     
     }
@@ -175,10 +175,7 @@ class pagesController extends Controller
         return redirect()->back();
     }
 
-    public function editor()
-    {
-        return view ('pages.editor');
-    }
+    
 
     public function accessDenied()
     {
@@ -196,9 +193,12 @@ class pagesController extends Controller
 
 
 
-    public function edit($id)
+    public function edit($post)
     {
         //
+        $post = Post::find($post);
+        return view ('pages.editor',compact('post'))->with('post',$post)->with('categories',Category::all());       
+
     }
 
     /**
@@ -208,9 +208,32 @@ class pagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$post)
     {
-        //
+        
+
+            $this->validate(request(),[
+                'title'       => 'required|min:5|max:50',
+                'body'     => 'required|min:10|max:250',
+                'featured'    => 'image|mimes:jpg,jpeg,gif,png|max:2048',
+            ]);
+        // image //
+            $featured_new_name =time().'.'.$request->featured->getClientOriginalName();
+
+
+            $post = Post::find($post);
+            $post->title = request('title');
+            $post->body = request('body');      
+            $post->featured = $featured_new_name;
+            $post->category_id = request('category_id');
+           
+            $post->Save();
+
+
+            $request->featured->move(public_path('uploads/posts'),$featured_new_name);
+
+            return redirect()->route('Posts'); 
+
     }
 
     /**

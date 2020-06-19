@@ -42,9 +42,10 @@ Route::group(['middleware' => 'roles', 'roles' => ['Admin']], function(){
 
 Route::group(['middleware' => 'roles', 'roles' => ['Admin','Editor']], function(){
 
-	Route::get('/editor', 'pagesController@editor')->name('Editor');
-
+	Route::get('/posts/{post}/edit', 'pagesController@edit')->name('Edit');
+	Route::post('/posts/{post}/update', 'pagesController@update')->name('Update');
 	Route::delete('/posts/{post}/destroy', 'pagesController@destroy')->name('Destroy');
+		
 
 });
 
