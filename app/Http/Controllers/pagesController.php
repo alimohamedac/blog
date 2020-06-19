@@ -219,9 +219,12 @@ class pagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($post)
     {
         //
-        
+        $post = Post::find($post);
+        $post->delete();
+
+        return redirect()->route('Posts');
     }
 }

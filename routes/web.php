@@ -23,6 +23,8 @@ Route::get('/contact','pagesController@contact')->name('Contact');
 Route::post('/contact','pagesController@send')->name('Send');
 
 
+
+
 Route::get('/', function(){
 	return redirect()->to('/posts');    //idea
 });
@@ -34,15 +36,19 @@ Route::group(['middleware' => 'roles', 'roles' => ['Admin']], function(){
 	Route::post('/add_role', 'pagesController@addRole')->name('Add_role');
 	Route::post('/settings', 'pagesController@settings')->name('Settings');	
 
+
+
+});
+
+Route::group(['middleware' => 'roles', 'roles' => ['Admin','Editor']], function(){
+
+	Route::get('/editor', 'pagesController@editor')->name('Editor');
+
+	Route::delete('/posts/{post}/destroy', 'pagesController@destroy')->name('Destroy');
+
 });
 
 
-Route::get('/editor', [
-	'uses' => 'pagesController@editor',
-	'as' => 'pages.editor',
-	'middleware' => 'roles',
-	'roles' => ['Admin','Editor']
-]);
 
 Route::get('/access_denied', 'pagesController@accessDenied')->name('AccessDenied');
 

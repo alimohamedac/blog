@@ -3,6 +3,15 @@
 @section('post')
         
         <h1 class="mt-4">{{ $post->title }}</h1>
+        @if(Auth::check())
+          @if(Auth::user()->hasRole('Admin') || Auth::user()->hasRole('Editor'))
+        <form action="{{ route('Destroy', $post->id) }}" method="Post">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+          @endif
+        @endif
 
         <hr>
         @if ($post->featured)
@@ -11,9 +20,9 @@
 
         <!-- Date/Time -->
         <p>Posted on {{ $post->created_at }} - <strong>Category:</strong>
-        
+        <a href="{{ route('Category', $post->category->name) }}">
           {{ $post->category->name }}
-       
+        </a>
         </p>
 
         <hr>
@@ -53,8 +62,7 @@
 @endsection
 
 @section('sideBar')
-        
- <!-- Sidebar Widgets Column -->
+      
       <div class="col-md-12">
 
         <!-- Search Widget -->
@@ -89,11 +97,12 @@
                                          
         <!-- Side Widget -->
         <div class="card my-4">
-          <h5 class="card-header">Extra</h5>
+          <h5 class="card-header">Advertisement</h5>
           <div class="card-body">
-            You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+            You can put anything you want inside of these side widgets. They are easy to advertise!
           </div>
         </div>
+        <br>
 
       </div>
 @endsection
