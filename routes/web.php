@@ -34,6 +34,9 @@ Route::group(['middleware' => 'roles', 'roles' => ['Admin']], function(){
 	Route::get('/admin', 'pagesController@admin')->name('Admin');
 	Route::post('/add_role', 'pagesController@addRole')->name('Add_role');
 	Route::post('/settings', 'pagesController@settings')->name('Settings');	
+	Route::post('/category/store', 'pagesController@storeCategory')->name('StoreCategory');	
+
+
 
 
 

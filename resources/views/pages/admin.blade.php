@@ -54,4 +54,14 @@
 </div>
 <hr>
 
+<form action="{{ route('StoreCategory') }}" method="post">
+  @csrf
+  <div class="form-group">
+    <label for="name">To Add new Category</label>
+    <input type="text" class="form-control" name="name" placeholder="Enter Name">  
+  </div>
+
+  <button type="submit" class="btn btn-primary">Add</button>
+</form>
+
 @endsection

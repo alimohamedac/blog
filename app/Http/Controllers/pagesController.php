@@ -13,6 +13,7 @@ use App\Role;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Contact;
 use App\Http\Requests\ContactRequest;
+use App\http\Requests\CategoryRequest;
 
 
 class pagesController extends Controller
@@ -118,6 +119,22 @@ class pagesController extends Controller
 
         return view ('pages.category', compact('posts'));
   
+    }
+
+     public function storeCategory(CategoryRequest $request)
+    {
+        //bdl hwar al request//
+
+        // $this->validate($request,[
+          //'name' => 'required'
+        //]);
+
+        $data = $request->all();
+        
+        $category = new Category;
+        $category->name = $request->name;
+        $category->save(); 
+        return redirect()->back();
     }
   
     public function admin()
