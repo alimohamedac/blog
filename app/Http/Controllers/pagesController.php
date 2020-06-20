@@ -98,6 +98,18 @@ class pagesController extends Controller
         return redirect()->back();
         //dd($request);
      }
+
+     public function search()
+    {
+        $text = request('q');
+        //$posts = Post::latest('id')->where('title','like','%'.$text.'%')->paginate(5);  
+        $posts = Post::latest('id')
+            ->where('title', 'like', '%'.$text.'%')
+            ->orWhere('body', 'like', '%'.$text.'%')
+            ->paginate(9);
+        return view('pages.search', compact('posts', 'text'));
+
+    }
    
     public function category($name)
     {

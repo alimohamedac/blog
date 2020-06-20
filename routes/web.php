@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/posts', 'pagesController@posts')->name('Posts');
 Route::get('/posts/{post}', 'pagesController@post')->name('Post');
-Route::post('/posts/store', 'pagesController@store')->name('Add_Post');
 Route::post('/posts/{post}/store', 'commentsController@store')->name('Add_Comment');
 Route::get('/category/{name}', 'pagesController@category')->name('Category');
 Route::get('/about', 'pagesController@about')->name('About');
@@ -42,6 +41,7 @@ Route::group(['middleware' => 'roles', 'roles' => ['Admin']], function(){
 
 Route::group(['middleware' => 'roles', 'roles' => ['Admin','Editor']], function(){
 
+	Route::post('/posts/store', 'pagesController@store')->name('Add_Post');
 	Route::get('/posts/{post}/edit', 'pagesController@edit')->name('Edit');
 	Route::post('/posts/{post}/update', 'pagesController@update')->name('Update');
 	Route::delete('/posts/{post}/destroy', 'pagesController@destroy')->name('Destroy');
@@ -59,3 +59,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/statistics', 'pagesController@statistics')->name('Statistics');
+
+Route::get('/search', 'pagesController@search')->name('Search');
+
