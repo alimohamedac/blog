@@ -25,26 +25,24 @@
 @endsection
 
 @section('sideBar')
-        
- <!-- Sidebar Widgets Column 
-<div style="float:right">
-     ali aaa
-     <hr>
-     alllllii
-   </div>
- -->
+
+      
       <div class="col-md-12">
 
         <!-- Search Widget -->
         <div class="card my-4">
-          <h5 class="card-header">Search</h5>
+          <h5 class="card-header">Search On Posts</h5>
           <div class="card-body">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search for...">
-              <span class="input-group-btn">
-                <button class="btn btn-secondary" type="button">Go!</button>
-              </span>
-            </div>
+
+            <form action="{{ route('Search') }}" method="get">
+              <div class="input-group">
+                <input type="text" class="form-control" name="q" value="{{ old('q') }}" placeholder="Search for...">
+                <span class="input-group-btn">
+                  <button class="btn btn-secondary" type="submit">Go!</button>
+                </span>
+              </div>
+
+            </form>
           </div>
         </div>
 
@@ -67,11 +65,12 @@
                                          
         <!-- Side Widget -->
         <div class="card my-4">
-          <h5 class="card-header">Extra</h5>
+          <h5 class="card-header">Advertisement</h5>
           <div class="card-body">
-            You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+            You can put anything you want inside of these side widgets. They are easy to advertise!
           </div>
         </div>
+        <br>
 
       </div>
 @endsection

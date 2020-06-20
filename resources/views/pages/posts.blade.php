@@ -87,7 +87,7 @@
 
         <!-- Search Widget -->
         <div class="card my-4">
-          <h5 class="card-header">Search</h5>
+          <h5 class="card-header">Search On Posts</h5>
           <div class="card-body">
 
             <form action="{{ route('Search') }}" method="get">
