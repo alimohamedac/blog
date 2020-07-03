@@ -10,7 +10,7 @@
 
         <hr>
         @if ($post->featured)
-        <p><img src="uploads/posts/{{ $post->featured }}"></p>
+        <p><img src="uploads/posts/{{ $post->featured }}" style="width: 300px" class="img-thumbnail"></p>
         @endif
         <!-- Date/Time -->
         <p>Posted on {{ $post->created_at }} - <strong>Category:</strong>

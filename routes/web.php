@@ -36,10 +36,6 @@ Route::group(['middleware' => 'roles', 'roles' => ['Admin']], function(){
 	Route::post('/settings', 'pagesController@settings')->name('Settings');	
 	Route::post('/category/store', 'pagesController@storeCategory')->name('StoreCategory');	
 
-
-
-
-
 });
 
 Route::group(['middleware' => 'roles', 'roles' => ['Admin','Editor']], function(){
@@ -49,7 +45,6 @@ Route::group(['middleware' => 'roles', 'roles' => ['Admin','Editor']], function(
 	Route::post('/posts/{post}/update', 'pagesController@update')->name('Update');
 	Route::delete('/posts/{post}/destroy', 'pagesController@destroy')->name('Destroy');
 		
-
 });
 
 
